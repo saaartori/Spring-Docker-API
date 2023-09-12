@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://index.docker.io/v1/
-        username: ${{ secrets.AzureAppService_ContainerUsername_71bb3e4832044891a98f3c9ffd4d0e48 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_00cb5cd3e01d426dba00124a00bc2816 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_0ba366458064428ab4cc32b1c7a85e82 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_e6aa54053a584c209caba72638ea29b1 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_71bb3e4832044891a98f3c9ffd4d0e48 }}/rm87091/study-api:${{ github.sha }}
+        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_0ba366458064428ab4cc32b1c7a85e82 }}/study-api:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'rm87091-study-api'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_1e630bf231b14c7ba9e5510fbef59a14 }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_71bb3e4832044891a98f3c9ffd4d0e48 }}/rm87091/study-api:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_a740224542dc4e34af393aafd1b9f143 }}
+        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_0ba366458064428ab4cc32b1c7a85e82 }}/study-api:${{ github.sha }}'
